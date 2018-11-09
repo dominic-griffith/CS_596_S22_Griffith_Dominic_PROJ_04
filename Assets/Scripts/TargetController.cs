@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 
 public class TargetController : MonoBehaviour {
-{
+
 
     // Use this for initialization
     void Start()

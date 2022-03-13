@@ -25,6 +25,9 @@ public class CannonController : MonoBehaviour
     public float cannon_Power = 5;
     private float _angle = 0;
 
+    public float speed = 10f;
+
+
     public void AngleUp()
     {
         if (_angle + AngleIncrement > 90f) return;
@@ -86,6 +89,14 @@ public class CannonController : MonoBehaviour
             // Move the cannon to the left
             transform.root.position += Vector3.left * TranslationIncrement;
         }
+
+        //Accelerometer
+        Vector3 dir = Vector3.zero;
+        dir.x = Input.acceleration.x;
+        if (dir.sqrMagnitude > 1)
+            dir.Normalize();
+        dir *= Time.deltaTime;
+        transform.root.Translate(dir * speed);
     }
 
     // For physics
